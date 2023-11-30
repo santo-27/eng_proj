@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Irrigation System</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary col-12">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Irrigation System</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Account</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li> -->
+            </ul>
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+      </nav>
+
+      <div class="card text-center col-12">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Irrigate ur Plant</h5>
+          <p class="card-text">Irrigate ur plant with the click of a button</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-body-secondary">
+          Last irrigated 2 days ago
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+        <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
+            <a class="navbar-brand" href="#">Current Condition(as of time!)</a>
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading1">First</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#scrollspyHeading2">Second</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+                  <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        <div  data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+            <h4 id="scrollspyHeading1">Temperature</h4>
+            <p>The actual temperature is: {{ weather["days"][0]["temp"] }} F</p>
+            <p>feelslike: {{ weather["days"][0]["feelslikemax"] }} F</p>
+            <p>feelslike: {{ weather["days"][0]["feelslikemin"] }} F</p>
+            <p>description: {{ weather["days"][0]["description"] }}</p>
+
+            <h4 id="scrollspyHeading2">Precipitation</h4>
+            <p>Precipiation cover: {{weather["days"][0]["precipcover"]}}</p>
+            <h4 id="scrollspyHeading3">Wind speed</h4>
+            <p>Average speed: {{weather["days"][0]["windspeed"]}} km/hr</p>
+            <p>Gust Speed: {{weather["days"][0]["windgust"]}} km/hr</p>
+            <h4 id="scrollspyHeading4">Water concentraion in soil</h4>
+            <p>water concentration</p>
+            <h4 id="scrollspyHeading5">Solar Radiation</h4>
+            <p>Solar Radiation: {{ weather["days"][0]["solarradiation"] }}</p>
+        </div>
+    </div>
+        <div class = "col-6">
+            <form action="{{ url_for('home') }}" method="post">
+                <div class="mb-3">
+                <label for="new_interval" class="form-label">New Interval</label>
+                <input class="form-control" id="new_interval" name="new_interval" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">Enter a valid interval here.</div>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password"class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">confirm</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+       </div>
+</body>
+<footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDM_yzsp2V7ZParlwSMf6mc35bq98FnvBQ",
+        authDomain: "intro-to-engineering.firebaseapp.com",
+        projectId: "intro-to-engineering",
+        storageBucket: "intro-to-engineering.appspot.com",
+        messagingSenderId: "322831521441",
+        appId: "1:322831521441:web:fff9595bad64a3893ac2e0",
+        measurementId: "G-Y1M4B3595C"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+</footer>
+</html>
