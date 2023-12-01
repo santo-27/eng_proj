@@ -19,11 +19,9 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">History</a>
+                <a class="nav-link" href="{{ url_for('show_history') }}">History</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Account</a>
-              </li>
+        
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
@@ -49,12 +47,12 @@
 
       <div class="card text-center col-12">
         <div class="card-header">
-          Featured
+          Irrigate
         </div>
         <div class="card-body">
           <h5 class="card-title">Irrigate ur Plant</h5>
           <p class="card-text">Irrigate ur plant with the click of a button</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn btn-primary">Click here !</a>
         </div>
         <div class="card-footer text-body-secondary">
           Last irrigated 2 days ago
@@ -64,7 +62,7 @@
       <div class="row">
         <div class="col-6">
         <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-            <a class="navbar-brand" href="#">Current Condition(as of time!)</a>
+            <a class="navbar-brand" href="#">Current Condition(as of {{weather["days"][0]["datetime"]}})</a>
             <ul class="nav nav-pills">
               <li class="nav-item">
                 <a class="nav-link" href="#scrollspyHeading1">First</a>
@@ -86,8 +84,8 @@
         <div  data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
             <h4 id="scrollspyHeading1">Temperature</h4>
             <p>The actual temperature is: {{ weather["days"][0]["temp"] }} F</p>
-            <p>feelslike: {{ weather["days"][0]["feelslikemax"] }} F</p>
-            <p>feelslike: {{ weather["days"][0]["feelslikemin"] }} F</p>
+            <p>feelslikemax: {{ weather["days"][0]["feelslikemax"] }} F</p>
+            <p>feelslikemin: {{ weather["days"][0]["feelslikemin"] }} F</p>
             <p>description: {{ weather["days"][0]["description"] }}</p>
 
             <h4 id="scrollspyHeading2">Precipitation</h4>
@@ -95,8 +93,7 @@
             <h4 id="scrollspyHeading3">Wind speed</h4>
             <p>Average speed: {{weather["days"][0]["windspeed"]}} km/hr</p>
             <p>Gust Speed: {{weather["days"][0]["windgust"]}} km/hr</p>
-            <h4 id="scrollspyHeading4">Water concentraion in soil</h4>
-            <p>water concentration</p>
+            <h4 id="scrollspyHeading4">Water concentration in soil</h4>
             <h4 id="scrollspyHeading5">Solar Radiation</h4>
             <p>Solar Radiation: {{ weather["days"][0]["solarradiation"] }}</p>
         </div>
@@ -104,13 +101,16 @@
         <div class = "col-6">
             <form action="{{ url_for('home') }}" method="post">
                 <div class="mb-3">
-                <label for="new_interval" class="form-label">New Interval</label>
+                <label for="new_interval" class="form-label">New Interval(in minutes)</label>
                 <input class="form-control" id="new_interval" name="new_interval" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">Enter a valid interval here.</div>
                 </div>
                 <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" name="password"class="form-control" id="exampleInputPassword1">
+                <div id="emailHelp" class="form-text" style="color: red;">{{ status_fail }}</div>
+                <div id="emailHelp" class="form-text" style="color: green;">{{ status_sucess }}</div>
+
                 </div>
                 <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
